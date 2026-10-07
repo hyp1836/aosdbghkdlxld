@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경남전자고 실습실 안전수칙</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans KR & Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        en: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            800: '#102a43',
+                            900: '#0b69a3',
+                            dark: '#0f172a',
+                        },
+                        brand: {
+                            blue: '#1e40af',
+                            accent: '#0284c7',
+                            emerald: '#059669',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for interaction and smooth transitions */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .item-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .item-card:hover {
+            transform: translateY(-2px);
+        }
+        .checked-text {
+            text-decoration: line-through;
+            color: #94a3b8;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-animate {
+            animation: modalFadeIn 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <header class="bg-gradient-to-r from-slate-900 via-navy-800 to-blue-900 text-white shadow-xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 py-8 sm:py-10 relative z-10">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-700/60 pb-6 mb-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/30 text-blue-200 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase mb-2">
+                        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                        Gyeongnam Electronic High School
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white font-en sm:font-sans">
+                        경남전자고 실습실 안전수칙
+                    </h1>
+                </div>
+                <span class="bg-white/10 backdrop-blur border border-white/20 text-slate-200 px-4 py-2 rounded-xl text-sm font-medium flex items-center gap-2 self-start sm:self-auto">
+                    🛡️ 사전 안전점검 모드
+                </span>
+            </div>
+            
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl font-light leading-relaxed">
+                안전한 실습 환경은 올바른 작업 습관에서 시작됩니다. 수업 시작 전 아래의 체크리스트를 하나씩 점검하며 동료와 함께 안전을 확인해 주세요.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+
+        <!-- Tip Box -->
+        <section class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-2xl p-5 sm:p-6 shadow-lg border border-blue-700/50 flex flex-col sm:flex-row items-center gap-5 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+            
+            <div class="bg-blue-500/20 p-4 rounded-2xl border border-blue-400/30 shrink-0 text-3xl sm:text-4xl">
+                💡
+            </div>
+            <div class="flex-1 text-center sm:text-left">
+                <div class="inline-block bg-blue-100 text-blue-900 font-bold text-xs px-2.5 py-0.5 rounded uppercase tracking-wider mb-1">
+                    동료 점검 팁 (Cross-Check)
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-white mb-1">
+                    "실습 시작 전에 친구와 서로 보호구를 착용했는지 확인해 주세요!"
+                </h3>
+                <p class="text-slate-300 text-sm font-light">
+                    내가 놓칠 수 있는 안전고리를 옆 동료가 점검해 줄 수 있습니다. 실습 전 서로의 보안경, 장갑, 복장 상태를 다 함께 확인합시다.
+                </p>
+            </div>
+        </section>
+
+        <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 sticky top-4 z-20 glass-card">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold text-slate-800 text-lg">점검 달성률</span>
+                    <span id="progress-text" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                        0 / 11 완료
+                    </span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span id="progress-percent" class="text-2xl font-black text-blue-800 font-en">0%</span>
+                    <button id="reset-btn" onclick="resetChecklist()" class="text-xs font-medium text-slate-500 hover:text-slate-800 flex items-center gap-1 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition-colors border border-slate-200">
+                        🔄 초기화
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-100 h-3.5 rounded-full overflow-hidden p-0.5 border border-slate-200">
+                <div id="progress-bar" class="bg-gradient-to-r from-blue-600 to-indigo-600 h-full rounded-full transition-all duration-300 ease-out w-0"></div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Category 1: 작업 전 보호구 착용 -->
+            <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-xl font-bold border border-blue-100">
+                            🥽
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">SECTION 01</span>
+                            <h2 class="text-lg font-bold text-slate-900">작업 전 보호구 착용</h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-blue-50/30 hover:border-blue-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-blue-700 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                실습용 <strong class="text-slate-900">보안경과 작업용 장갑</strong>을 반드시 착용했는가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-blue-50/30 hover:border-blue-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-blue-700 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                옷소매를 걷고 <strong class="text-slate-900">긴 머리를 묶어</strong> 회전 기계 말림 위험을 방지했는가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-blue-50/30 hover:border-blue-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-blue-700 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                장신구(반지, 목걸이)를 제거하여 <strong class="text-slate-900">복장을 정돈</strong>했는가?
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 2: 감전 예방 -->
+            <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center text-xl font-bold border border-sky-100">
+                            ⚡
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-sky-600 uppercase tracking-wider">SECTION 02</span>
+                            <h2 class="text-lg font-bold text-slate-900">감전 예방</h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-sky-50/30 hover:border-sky-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-sky-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                손과 작업대 주변에 <strong class="text-slate-900">물기가 없는지 완벽히 제거</strong>했는가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-sky-50/30 hover:border-sky-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-sky-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                전원 플러그를 뽑을 때 전선이 아닌 <strong class="text-slate-900">플러그 머리 부분을 잡았는가?</strong>
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-sky-50/30 hover:border-sky-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-sky-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                손상되거나 피복이 벗겨진 전선을 발견했을 때 <strong class="text-slate-900">즉시 선생님께 알릴</strong> 준비가 되었는가?
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 3: 비상정지 버튼 확인 -->
+            <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center text-xl font-bold border border-red-100">
+                            🚨
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-red-600 uppercase tracking-wider">SECTION 03</span>
+                            <h2 class="text-lg font-bold text-slate-900">비상정지 버튼 확인</h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-red-50/30 hover:border-red-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-red-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                장비 및 실습대 위치의 <strong class="text-slate-900">비상정지 버튼(E-STOP) 위치</strong>를 파악했는가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-red-50/30 hover:border-red-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-red-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                이상 소음, 연기, 사고 발생 시 <strong class="text-slate-900">큰 소리로 "비상!"을 외쳐 알릴</strong> 준비가 되었는가?
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category 4: 정리정돈 -->
+            <section class="bg-white rounded-2xl p-6 shadow-md border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold border border-emerald-100">
+                            🧹
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">SECTION 04</span>
+                            <h2 class="text-lg font-bold text-slate-900">정리정돈</h2>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-emerald-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                실습 종료 후 <strong class="text-slate-900">전원을 차단하고 공구를 제자리에 반납</strong>할 수 있는가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-emerald-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                작업대 위와 바닥을 청소하고 <strong class="text-slate-900">통로를 방해하는 장애물을 치울</strong> 예정인가?
+                            </span>
+                        </label>
+
+                        <label class="item-card flex items-start gap-3 p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-emerald-50/30 hover:border-emerald-200 cursor-pointer">
+                            <input type="checkbox" class="chk-item w-5 h-5 mt-0.5 accent-emerald-600 rounded border-slate-300 cursor-pointer shrink-0">
+                            <span class="item-label text-sm text-slate-700 font-medium leading-relaxed select-none">
+                                퇴실 전 <strong class="text-slate-900">최종 메인 스위치 Off 상태</strong>를 재확인할 것인가?
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <div id="completion-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 sm:p-8 text-center border border-slate-100 modal-animate">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4 border-4 border-emerald-50">
+                ✅
+            </div>
+            <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                Checklist Complete
+            </span>
+            <h3 class="text-2xl font-extrabold text-slate-900 mt-3 mb-2">
+                모든 점검을 마쳤습니다!
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                경남전자고 실습실 안전수칙 <strong class="text-slate-800">11개 전체 항목</strong> 점검 완료.<br>동료와 함께 안전수칙을 지키며 즐겁고 안전한 실습을 시작하세요!
+            </p>
+            <button onclick="closeModal()" class="w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white font-bold py-3.5 px-6 rounded-xl hover:from-blue-800 hover:to-indigo-800 transition-all shadow-lg shadow-blue-900/20 active:scale-95">
+                안전하게 실습 시작하기 🚀
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-400 text-xs text-center py-6 border-t border-slate-800 mt-12">
+        <div class="max-w-5xl mx-auto px-4 space-y-1">
+            <p class="font-medium text-slate-300">경남전자고등학교 실습안전 관리시스템</p>
+            <p class="text-slate-500">© Gyeongnam Electronic High School. Safety First Always.</p>
+        </div>
+    </footer>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.chk-item');
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        const progressText = document.getElementById('progress-text');
+        const modal = document.getElementById('completion-modal');
+
+        const totalItems = checkboxes.length;
+
+        // Progress Calculation & UI Update
+        function updateProgress() {
+            let checkedCount = 0;
+
+            checkboxes.forEach((cb) => {
+                const labelText = cb.nextElementSibling;
+                if (cb.checked) {
+                    checkedCount++;
+                    labelText.classList.add('checked-text');
+                } else {
+                    labelText.classList.remove('checked-text');
+                }
+            });
+
+            const percentage = Math.round((checkedCount / totalItems) * 100);
+
+            progressBar.style.width = `${percentage}%`;
+            progressPercent.textContent = `${percentage}%`;
+            progressText.textContent = `${checkedCount} / ${totalItems} 완료`;
+
+            // Display celebration modal when all items are checked
+            if (checkedCount === totalItems && totalItems > 0) {
+                setTimeout(() => {
+                    modal.classList.remove('hidden');
+                }, 250);
+            }
+        }
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        // Reset All Checkboxes
+        function resetChecklist() {
+            checkboxes.forEach((cb) => {
+                cb.checked = false;
+            });
+            updateProgress();
+        }
+
+        // Close Completion Modal
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
