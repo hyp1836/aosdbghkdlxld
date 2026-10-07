@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맨체스터 유나이티드 (Manchester United)</title>
+    <style>
+        :root {
+            --primary-color: #DA291C; /* 맨유 붉은색 */
+            --secondary-color: #000000; /* 블랙 */
+            --accent-color: #FBE122; /* 옐로우 */
+            --bg-color: #F8F9FA; /* 깔끔한 연회색 배경 */
+            --card-bg: #FFFFFF;
+            --text-main: #212529;
+            --text-sub: #6C757D;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            font-size: 18px; /* 기본 글자 크기를 충분히 크게 설정 */
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .search-section {
+            margin: 25px 0;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #E9ECEF;
+            border-radius: var(--border-radius);
+            outline: none;
+            box-shadow: var(--shadow);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background-color: white;
+        }
+
+        .search-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(218, 41, 28, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin: 35px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 650px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid #EAEAEA;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            background: #FFF5F5;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .card-desc {
+            font-size: 1rem;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+            word-break: keep-all;
+        }
+
+        .expand-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #E0E0E0;
+            font-size: 1rem;
+            color: var(--text-main);
+            background-color: #FAFAFA;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .expand-content.show {
+            display: block;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #B51F15;
+        }
+
+        .btn-secondary {
+            background-color: #6C757D;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5A6268;
+        }
+
+        .quiz-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            border: 2px solid #EAEAEA;
+            margin-top: 20px;
+        }
+
+        .quiz-question {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background-color: #F8F9FA;
+            border: 2px solid #DEE2E6;
+            color: var(--text-main);
+            padding: 14px 18px;
+            font-size: 1.05rem;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            background-color: #E9ECEF;
+            border-color: #CED4DA;
+        }
+
+        .option-btn.correct {
+            background-color: #D4EDDA;
+            border-color: #28A745;
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-btn.wrong {
+            background-color: #F8D7DA;
+            border-color: #DC3545;
+            color: #721C24;
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+        }
+
+        .quiz-feedback.correct {
+            background-color: #D4EDDA;
+            color: #155724;
+        }
+
+        .quiz-feedback.wrong {
+            background-color: #F8D7DA;
+            color: #721C24;
+        }
+
+        .no-result {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-sub);
+            display: none;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            border-top: 1px solid #EAEAEA;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>⚽ 맨체스터 유나이티드</h1>
+            <p>세계 최고의 명문 축구 클럽의 역사와 레전드 이야기</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-section">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 검색어를 입력하세요 (예: 역사, 박지성, 트레블, 루니)" onkeyup="filterCards()">
+        </div>
+
+        <h2 class="section-title">📜 맨유의 역사 (History)</h2>
+        <div class="card-grid" id="historyGrid">
+            
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🏛️</span>
+                        <div class="card-title">클럽의 창단 (1878)</div>
+                    </div>
+                    <div class="card-desc">
+                        맨체스터 유나이티드는 1878년 '뉴턴 히스 LYR 축구단'으로 출발했습니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-1', this)">내용 펼치기 🔽</button>
+                    <div id="exp-1" class="expand-content">
+                        철도 회사 직원들이 모여 만든 팀으로 시작하여, 1902년에 현재의 이름인 **'맨체스터 유나이티드'**로 명칭을 변경했습니다. 이후 붉은 유니폼을 입으며 세계적인 명문 클럽으로 발전하기 시작했습니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🏆</span>
+                        <div class="card-title">전설의 1999년 트레블</div>
+                    </div>
+                    <div class="card-desc">
+                        잉글랜드 클럽 최초로 한 시즌에 3개의 주요 우승컵을 모두 들어 올렸습니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-2', this)">내용 펼치기 🔽</button>
+                    <div id="exp-2" class="expand-content">
+                        1998-1999 시즌, 프리미어리그, FA컵, 그리고 UEFA 챔피언스리그를 동시에 우승하며 세계 축구 역사에 영원히 남을 **'트레블(3관왕)'** 대기록을 작성했습니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">👔</span>
+                        <div class="card-title">알렉스 퍼거슨 경 시대</div>
+                    </div>
+                    <div class="card-desc">
+                        27년 동안 팀을 이끌며 38개의 우승 트로피를 선사한 최고 황금기입니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-3', this)">내용 펼치기 🔽</button>
+                    <div id="exp-3" class="expand-content">
+                        1986년부터 2013년까지 감독을 맡으며 프리미어리그 우승 13회, 챔피언스리그 우승 2회 등 엄청난 성과를 거두었습니다. 그 공로를 인정받아 영국의 기사 작위를 받았습니다.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">⭐ 레전드 선수 (Legend Players)</h2>
+        <div class="card-grid" id="legendsGrid">
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">👑</span>
+                        <div class="card-title">웨인 루니 (Wayne Rooney)</div>
+                    </div>
+                    <div class="card-desc">
+                        맨체스터 유나이티드 역사상 가장 많은 골을 넣은 역대 최다 득점자입니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-4', this)">선수 정보 더보기 🔽</button>
+                    <div id="exp-4" class="expand-content">
+                        • **포지션:** 공격수<br>
+                        • **통산 기록:** 559경기 253골<br>
+                        • 강력한 슈팅과 지치지 않는 승부욕으로 팬들의 큰 사랑을 받았습니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🇰🇷</span>
+                        <div class="card-title">박지성 (Ji-Sung Park)</div>
+                    </div>
+                    <div class="card-desc">
+                        '세 개의 폐를 가진 사나이'로 불리며 대경기를 지배한 대한민국 축구 영웅입니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-5', this)">선수 정보 더보기 🔽</button>
+                    <div id="exp-5" class="expand-content">
+                        • **포지션:** 미드필더<br>
+                        • **활동 기간:** 2005 ~ 2012년<br>
+                        • 퍼거슨 감독의 두터운 신뢰를 받았으며, 아시아인 최초로 UEFA 챔피언스리그 결승전 무대를 누볐습니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🎯</span>
+                        <div class="card-title">라이언 긱스 (Ryan Giggs)</div>
+                    </div>
+                    <div class="card-desc">
+                        맨체스터 유나이티드 통산 최다 출전 기록을 보유한 헌신의 아이콘입니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-6', this)">선수 정보 더보기 🔽</button>
+                    <div id="exp-6" class="expand-content">
+                        • **포지션:** 윙어 / 미드필더<br>
+                        • **통산 기록:** 963경기 출전<br>
+                        • 유스 시절부터 은퇴할 때까지 맨유에서만 뛴 대표적인 '원클럽맨'입니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card searchable-item">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">👑</span>
+                        <div class="card-title">에릭 칸토나 (Eric Cantona)</div>
+                    </div>
+                    <div class="card-desc">
+                        '올드 트래포드의 왕'이라 불리며 팀의 카리스마를 담당했던 전설입니다.
+                    </div>
+                </div>
+                <div>
+                    <button class="btn" onclick="toggleExpand('exp-7', this)">선수 정보 더보기 🔽</button>
+                    <div id="exp-7" class="expand-content">
+                        • **포지션:** 공격수<br>
+                        • 세워진 깃과 특유의 당당한 태도로 90년대 맨유 부흥기의 중심 역할을 했습니다.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="noResult" class="no-result">
+            🔍 검색 결과가 없습니다. 다른 검색어를 입력해 보세요!
+        </div>
+
+        <h2 class="section-title">🧠 맨유 상식 퀴즈 (Quiz)</h2>
+        <div class="quiz-card">
+            <div id="quizContainer">
+                <div class="quiz-question" id="quizQuestion">질문을 불러오는 중...</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div class="quiz-feedback" id="quizFeedback"></div>
+            </div>
+            <div style="margin-top: 15px;">
+                <button id="nextQuizBtn" class="btn btn-secondary" onclick="nextQuestion()" style="display: none;">다음 문제 ➡️</button>
+                <button id="restartQuizBtn" class="btn" onclick="restartQuiz()" style="display: none;">퀴즈 다시 풀기 🔄</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© Manchester United Fan Page | 깔끔한 단일 페이지 웹사이트</p>
+    </footer>
+
+    <script>
+        // --- 1. 내용 펼치기/접기 버튼 기능 ---
+        function toggleExpand(id, btnElement) {
+            const content = document.getElementById(id);
+            if (content.classList.contains('show')) {
+                content.classList.remove('show');
+                btnElement.textContent = btnElement.textContent.includes('선수') ? '선수 정보 더보기 🔽' : '내용 펼치기 🔽';
+            } else {
+                content.classList.add('show');
+                btnElement.textContent = '내용 접기 🔼';
+            }
+        }
+
+        // --- 2. 실시간 검색 기능 ---
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.searchable-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const noResultEl = document.getElementById('noResult');
+            if (visibleCount === 0) {
+                noResultEl.style.display = 'block';
+            } else {
+                noResultEl.style.display = 'none';
+            }
+        }
+
+        // --- 3. 퀴즈 기능 ---
+        const quizData = [
+            {
+                question: "1. 맨체스터 유나이티드 역사상 가장 많은 골을 넣은 최다 득점자는 누구일까요?",
+                options: ["크리스티아누 호날두", "웨인 루니", "라이언 긱스", "에릭 칸토나"],
+                correct: 1,
+                explanation: "정답입니다! 웨인 루니는 맨유에서 총 253골을 넣었습니다."
+            },
+            {
+                question: "2. 맨체스터 유나이티드가 프리미어리그, FA컵, 챔피언스리그를 동시에 우승한 '트레블' 달성 연도는 언제일까요?",
+                options: ["1990년", "1999년", "2008년", "2013년"],
+                correct: 1,
+                explanation: "정답입니다! 1999년에 전설적인 트레블을 달성했습니다."
+            },
+            {
+                question: "3. '세 개의 폐를 가진 사나이'라는 별명으로 맨유에서 맹활약한 한국인 선수는 누구일까요?",
+                options: ["손흥민", "차범근", "박지성", "이강인"],
+                correct: 2,
+                explanation: "정답입니다! 박지성 선수는 2005년부터 2012년까지 맨유의 핵심 멤버로 활약했습니다."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQuiz() {
+            answered = false;
+            const currentQuiz = quizData[currentQuizIndex];
+            document.getElementById('quizQuestion').textContent = currentQuiz.question;
+            
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+
+            const feedbackEl = document.getElementById('quizFeedback');
+            feedbackEl.className = 'quiz-feedback';
+            feedbackEl.style.display = 'none';
+
+            document.getElementById('nextQuizBtn').style.display = 'none';
+            document.getElementById('restartQuizBtn').style.display = 'none';
+
+            currentQuiz.options.forEach((optIndex, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = `${index + 1}. ${optIndex}`;
+                btn.onclick = () => selectOption(index);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const currentQuiz = quizData[currentQuizIndex];
+            const optionButtons = document.querySelectorAll('.option-btn');
+            const feedbackEl = document.getElementById('quizFeedback');
+
+            if (selectedIndex === currentQuiz.correct) {
+                score++;
+                optionButtons[selectedIndex].classList.add('correct');
+                feedbackEl.textContent = "⭕ " + currentQuiz.explanation;
+                feedbackEl.classList.add('correct', 'show');
+            } else {
+                optionButtons[selectedIndex].classList.add('wrong');
+                optionButtons[currentQuiz.correct].classList.add('correct');
+                feedbackEl.textContent = `❌ 아쉽네요! 정답은 ${currentQuiz.correct + 1}번입니다.`;
+                feedbackEl.classList.add('wrong', 'show');
+            }
+
+            if (currentQuizIndex < quizData.length - 1) {
+                document.getElementById('nextQuizBtn').style.display = 'block';
+            } else {
+                setTimeout(showFinalResult, 1000);
+            }
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            loadQuiz();
+        }
+
+        function showFinalResult() {
+            document.getElementById('quizQuestion').textContent = "🎉 퀴즈 완료!";
+            document.getElementById('quizOptions').innerHTML = `<p style="font-size: 1.2rem; font-weight: bold; text-align: center; padding: 20px;">총 ${quizData.length}문제 중 <span style="color: var(--primary-color);">${score}문제</span>를 맞히셨습니다!</p>`;
+            document.getElementById('quizFeedback').style.display = 'none';
+            document.getElementById('nextQuizBtn').style.display = 'none';
+            document.getElementById('restartQuizBtn').style.display = 'block';
+        }
+
+        function restartQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            loadQuiz();
+        }
+
+        // 페이지 로드 시 퀴즈 첫 문제 출력
+        window.onload = function() {
+            loadQuiz();
+        };
+    </script>
+</body>
+</html>
